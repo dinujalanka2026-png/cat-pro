@@ -1,0 +1,1701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids' Cat World | ළමා පූස් ලෝකය | பூனை உலகம்</title>
+    <!-- Google Fonts: Fredoka for rounded kid-friendly typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-gradient: radial-gradient(circle at 10% 20%, rgba(255, 249, 230, 1) 0%, rgba(255, 230, 235, 1) 50%, rgba(230, 247, 255, 1) 100%);
+            --primary-color: #ff6f91;
+            --primary-hover: #ff477e;
+            --secondary-color: #845ef7;
+            --accent-color: #ffc048;
+            --text-dark: #2c3e50;
+            --text-light: #ffffff;
+            --card-shadow: 0 15px 30px rgba(255, 111, 145, 0.15);
+            --transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Fredoka', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-dark);
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding-bottom: 50px;
+        }
+
+        /* Ambient animated background bubbles */
+        .ambient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .bubble {
+            position: absolute;
+            background: rgba(255, 111, 145, 0.15);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+        }
+
+        /* Header Style */
+        header {
+            text-align: center;
+            padding: 40px 20px 20px 20px;
+            position: relative;
+        }
+
+        .header-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Hero Image Container */
+        .hero-img-container {
+            width: 100%;
+            max-width: 650px;
+            margin: 0 auto 30px auto;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(132, 94, 247, 0.25);
+            border: 8px solid white;
+            transform: rotate(-1.5deg);
+            transition: var(--transition);
+        }
+
+        .hero-img-container:hover {
+            transform: rotate(1deg) scale(1.02);
+        }
+
+        .hero-img-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3.2rem;
+            color: var(--secondary-color);
+            text-shadow: 3px 3px 0px white, 6px 6px 0px rgba(0,0,0,0.05);
+            margin-bottom: 10px;
+            animation: bounceIn 1s ease;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+            opacity: 0.9;
+        }
+
+        /* Language Toggle Buttons */
+        .lang-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .lang-btn {
+            background: white;
+            border: 3px solid var(--primary-color);
+            padding: 10px 24px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 6px 0px var(--primary-color);
+            transition: var(--transition);
+            color: var(--text-dark);
+        }
+
+        .lang-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 9px 0px var(--primary-color);
+        }
+
+        .lang-btn:active {
+            transform: translateY(3px);
+            box-shadow: 0 2px 0px var(--primary-color);
+        }
+
+        .lang-btn.active {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 6px 0px var(--primary-hover);
+            border-color: var(--primary-hover);
+        }
+
+        /* Search and Filter Section */
+        .controls-container {
+            max-width: 1000px;
+            margin: 0 auto 40px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border: 4px dashed var(--secondary-color);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .search-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 15px 25px 15px 50px;
+            border: 3px solid #e2e8f0;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-family: inherit;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .search-bar:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 15px rgba(132, 94, 247, 0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.3rem;
+            pointer-events: none;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .filter-btn {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .filter-btn:hover {
+            transform: scale(1.05);
+            background: #e9ecef;
+        }
+
+        .filter-btn.active {
+            background: var(--secondary-color);
+            color: white;
+            border-color: var(--secondary-color);
+            box-shadow: 0 5px 15px rgba(132, 94, 247, 0.3);
+        }
+
+        /* Cat Grid */
+        .cat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Cat Card Styling with Cute Ears */
+        .cat-card {
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            border: 5px solid white;
+            position: relative;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            margin-top: 15px;
+        }
+
+        /* Left and Right ears of the cat card */
+        .cat-card::before, .cat-card::after {
+            content: '';
+            position: absolute;
+            top: -16px;
+            width: 35px;
+            height: 30px;
+            background: white;
+            border: 5px solid white;
+            z-index: 1;
+            transition: var(--transition);
+        }
+        
+        .cat-card::before {
+            left: 35px;
+            border-top-left-radius: 70% 100%;
+            border-top-right-radius: 30% 50%;
+            transform: rotate(-15deg);
+            box-shadow: -4px -4px 0 rgba(0,0,0,0.02);
+        }
+
+        .cat-card::after {
+            right: 35px;
+            border-top-right-radius: 70% 100%;
+            border-top-left-radius: 30% 50%;
+            transform: rotate(15deg);
+            box-shadow: 4px -4px 0 rgba(0,0,0,0.02);
+        }
+
+        .ear-inner-l, .ear-inner-r {
+            position: absolute;
+            top: -10px;
+            width: 18px;
+            height: 18px;
+            background: #ffb6c1;
+            z-index: 2;
+            pointer-events: none;
+            border-radius: 50% 50% 0 0;
+        }
+        .ear-inner-l { left: 43px; transform: rotate(-15deg); }
+        .ear-inner-r { right: 43px; transform: rotate(15deg); }
+
+        .cat-card:hover {
+            transform: translateY(-10px) scale(1.01);
+            box-shadow: 0 20px 40px rgba(255, 111, 145, 0.25);
+        }
+
+        .cat-img-wrapper {
+            position: relative;
+            height: 240px;
+            overflow: hidden;
+            background: #f0f0f0;
+        }
+
+        .cat-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .cat-card:hover .cat-img-wrapper img {
+            transform: scale(1.1);
+        }
+
+        .category-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 6px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            z-index: 5;
+        }
+
+        .cat-info {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .cat-name {
+            font-size: 1.6rem;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .cat-desc {
+            font-size: 1rem;
+            color: #576574;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .personality-tag {
+            font-size: 0.85rem;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        .tag-0 { background: #ffe3e3; color: #ff6b6b; }
+        .tag-1 { background: #e3faf2; color: #0ca678; }
+        .tag-2 { background: #e8f7ff; color: #1c7ed6; }
+
+        /* Speech Bubble style for Fun Facts */
+        .fact-bubble {
+            background: #fff9db;
+            border: 2px solid #ffe066;
+            border-radius: 18px;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            font-size: 0.95rem;
+            color: #744210;
+        }
+
+        .fact-bubble::before {
+            content: '💡 Did you know?';
+            display: block;
+            font-weight: 700;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            color: #f59f00;
+        }
+
+        .card-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: auto;
+        }
+
+        .card-btn {
+            border: none;
+            padding: 12px 10px;
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .btn-sound {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 0 #d9486b;
+        }
+
+        .btn-sound:hover {
+            transform: translateY(-2px);
+            background: var(--primary-hover);
+            box-shadow: 0 6px 0 #d9486b;
+        }
+
+        .btn-sound:active {
+            transform: translateY(2px);
+            box-shadow: 0 1px 0 #d9486b;
+        }
+
+        .btn-stats {
+            background: #e2e8f0;
+            color: var(--text-dark);
+            box-shadow: 0 4px 0 #cbd5e1;
+        }
+
+        .btn-stats:hover {
+            transform: translateY(-2px);
+            background: #cbd5e1;
+            box-shadow: 0 6px 0 #94a3b8;
+        }
+
+        .btn-stats:active {
+            transform: translateY(2px);
+            box-shadow: 0 1px 0 #cbd5e1;
+        }
+
+        /* Stats Sliding Drawer overlay */
+        .stats-drawer {
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            background: var(--secondary-color);
+            color: white;
+            padding: 25px;
+            border-top-left-radius: 25px;
+            border-top-right-radius: 25px;
+            transition: var(--transition);
+            z-index: 10;
+            box-shadow: 0 -10px 20px rgba(0,0,0,0.1);
+        }
+
+        .stats-drawer.open {
+            bottom: 0;
+        }
+
+        .stats-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 2px dashed rgba(255,255,255,0.3);
+            padding-bottom: 8px;
+        }
+
+        .close-stats {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .stat-label {
+            opacity: 0.85;
+            font-weight: 600;
+        }
+
+        .stat-val {
+            font-weight: 700;
+        }
+
+        /* Quiz Box */
+        .quiz-section {
+            max-width: 800px;
+            margin: 60px auto 40px auto;
+            background: white;
+            border-radius: 35px;
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(132,94,247,0.15);
+            border: 8px solid #f3f0ff;
+            text-align: center;
+            position: relative;
+        }
+
+        .quiz-section::before {
+            content: '✏️';
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2.5rem;
+            background: white;
+            padding: 5px 15px;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .quiz-title {
+            color: var(--secondary-color);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .quiz-desc {
+            font-size: 1.1rem;
+            color: #576574;
+            margin-bottom: 30px;
+        }
+
+        .score-board {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: #f3f0ff;
+            padding: 12px 25px;
+            border-radius: 50px;
+            width: fit-content;
+            margin: 0 auto 30px auto;
+            color: var(--secondary-color);
+            border: 3px solid #dcd3ff;
+        }
+
+        .question-card {
+            background: #faf9ff;
+            border-radius: 20px;
+            padding: 30px;
+            border: 2px solid #eee;
+            margin-bottom: 35px;
+            min-height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .options-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 2.2rem; }
+        }
+
+        .option-btn {
+            background: white;
+            border: 3px solid #e2e8f0;
+            padding: 18px 20px;
+            font-family: inherit;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 6px 0 #e2e8f0;
+            color: var(--text-dark);
+        }
+
+        .option-btn:hover:not(:disabled) {
+            border-color: var(--secondary-color);
+            box-shadow: 0 6px 0 var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .option-btn:active:not(:disabled) {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 var(--secondary-color);
+        }
+
+        .option-btn.correct {
+            background: #c2f970;
+            border-color: #92d03a;
+            box-shadow: 0 6px 0 #7aa82f;
+            color: #2b5c00;
+        }
+
+        .option-btn.incorrect {
+            background: #ffccd5;
+            border-color: #ff8787;
+            box-shadow: 0 6px 0 #fa5252;
+            color: #c91a1a;
+        }
+
+        .quiz-success {
+            display: none;
+            padding: 40px 10px;
+            animation: zoomIn 0.5s ease;
+        }
+
+        .quiz-success h3 {
+            font-size: 2.4rem;
+            color: #40c057;
+            margin-bottom: 15px;
+        }
+
+        .quiz-success p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #576574;
+        }
+
+        .btn-restart {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-family: inherit;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 6px 0 #5f3dc4;
+            transition: var(--transition);
+        }
+
+        .btn-restart:hover {
+            background: #7048e8;
+            box-shadow: 0 8px 0 #5f3dc4;
+            transform: translateY(-2px);
+        }
+
+        .btn-restart:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #5f3dc4;
+        }
+
+        /* Floating Helper Cat */
+        .helper-cat {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 100;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .helper-cat:hover {
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        .cat-avatar {
+            font-size: 3.5rem;
+            background: white;
+            border: 4px solid var(--primary-color);
+            border-radius: 50%;
+            width: 75px;
+            height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(255,111,145,0.3);
+            position: relative;
+        }
+
+        .cat-avatar::after {
+            content: '💬';
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            font-size: 1.2rem;
+        }
+
+        .chat-bubble {
+            background: white;
+            border: 3px solid var(--primary-color);
+            border-radius: 20px;
+            padding: 15px 20px;
+            margin-right: 15px;
+            max-width: 250px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            position: relative;
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .chat-bubble::after {
+            content: '';
+            position: absolute;
+            right: -12px;
+            bottom: 20px;
+            border-width: 12px 0 12px 12px;
+            border-style: solid;
+            border-color: transparent transparent transparent white;
+            display: block;
+            width: 0;
+            z-index: 2;
+        }
+
+        .chat-bubble::before {
+            content: '';
+            position: absolute;
+            right: -16px;
+            bottom: 18px;
+            border-width: 14px 0 14px 14px;
+            border-style: solid;
+            border-color: transparent transparent transparent var(--primary-color);
+            display: block;
+            width: 0;
+            z-index: 1;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #8b9bb4;
+            font-size: 0.95rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.3); }
+            50% { opacity: 0.9; transform: scale(1.1); }
+            70% { transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 50px 20px;
+            font-size: 1.3rem;
+            color: #576574;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-bg" id="ambientBg"></div>
+
+    <header>
+        <div class="header-content">
+            <div class="hero-img-container" id="heroImageContainer">
+                <img src="kids_cat_world_hero.png" alt="Kids' Cat World Hero Banner" onerror="this.src='https://images.unsplash.com/photo-1548247416-ec66f4900b2e?auto=format&fit=crop&w=800&q=80'">
+            </div>
+            <h1 id="ui-title">Kids' Cat World</h1>
+            <p class="subtitle" id="ui-subtitle">Discover, learn, and hear different cats from all around the world!</p>
+        </div>
+    </header>
+
+    <!-- Language Buttons -->
+    <div class="lang-container">
+        <button class="lang-btn active" onclick="switchLanguage('en')">🇬🇧 English</button>
+        <button class="lang-btn" onclick="switchLanguage('si')">🇱🇰 සිංහල</button>
+        <button class="lang-btn" onclick="switchLanguage('ta')">🇱🇰 தமிழ்</button>
+    </div>
+
+    <!-- Filter Tools -->
+    <div class="controls-container">
+        <div class="search-wrapper">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search-bar" id="searchBar" placeholder="Search for a cat..." oninput="filterCats()">
+        </div>
+        <div class="filter-buttons">
+            <button class="filter-btn active" id="btn-all" onclick="filterCategory('all')">🐱 <span id="ui-all">All Cats</span></button>
+            <button class="filter-btn" id="btn-fluffy" onclick="filterCategory('fluffy')">☁️ <span id="ui-fluffy">Fluffy</span></button>
+            <button class="filter-btn" id="btn-playful" onclick="filterCategory('playful')">⚡ <span id="ui-playful">Playful</span></button>
+            <button class="filter-btn" id="btn-wild" onclick="filterCategory('wild')">🦁 <span id="ui-wild">Wild</span></button>
+        </div>
+    </div>
+
+    <!-- Main Cat Cards Grid -->
+    <div class="cat-grid" id="catGrid"></div>
+
+    <div class="no-results" id="noResults">
+        😿 No cats found! Try another name.
+    </div>
+
+    <!-- Knowledge Quiz Game -->
+    <div class="quiz-section">
+        <h2 class="quiz-title" id="ui-quiz-title">Cat Quiz Challenge!</h2>
+        <p class="quiz-desc" id="ui-quiz-desc">Test your feline knowledge and earn paw points!</p>
+        
+        <div class="score-board">
+            🐾 <span id="ui-score-label">Score</span>: <span id="score">0</span> / 5
+        </div>
+
+        <div id="quiz-play-area">
+            <div class="question-card" id="questionCard"></div>
+            <div class="options-grid" id="optionsGrid"></div>
+        </div>
+
+        <div class="quiz-success" id="quizSuccess">
+            <h3 id="ui-success-title">🎉 Purr-fect Score!</h3>
+            <p id="ui-success-desc">You are a certified Cat Expert! Meow-tastic job!</p>
+            <button class="btn-restart" onclick="restartQuiz()" id="ui-restart-btn">Play Again 🔄</button>
+        </div>
+    </div>
+
+    <!-- Helper Widget with Jokes -->
+    <div class="helper-cat" onclick="toggleChatBubble()">
+        <div class="chat-bubble" id="chatBubble">
+            Hello, little friend! Click me to hear a funny cat joke!
+        </div>
+        <div class="cat-avatar">🐱</div>
+    </div>
+
+    <footer>
+        <p>© 2026 Kids' Cat World. Designed with ❤️ for future animal lovers.</p>
+    </footer>
+
+    <script>
+        // Language State
+        let currentLang = 'en';
+
+        // Translation Maps
+        const uiTranslations = {
+            en: {
+                title: "Kids' Cat World 🐱",
+                subtitle: "Discover, learn, and hear different cats from all around the world!",
+                searchPlaceholder: "Search for a cat...",
+                all: "All Cats",
+                fluffy: "Fluffy Cats ☁️",
+                playful: "Playful Cats ⚡",
+                wild: "Wild Cats 🦁",
+                btnHear: "Hear Sound! 🔊",
+                btnStats: "Stats 📊",
+                quizTitle: "Cat Quiz Challenge! ✏️",
+                quizDesc: "Test your feline knowledge and earn paw points!",
+                scoreLabel: "Score",
+                successTitle: "🎉 Purr-fect Score!",
+                successDesc: "You are a certified Cat Expert! Meow-tastic job!",
+                restartBtn: "Play Again 🔄",
+                noResults: "😿 No cats found! Try another name.",
+                statsSize: "Size",
+                statsLife: "Lifespan",
+                close: "Close ❌",
+                helperIntro: "Hello! Click me to read a funny cat joke!",
+                jokes: [
+                    "Why did the cat sit on the computer? To keep an eye on the mouse! 🐭",
+                    "What is a cat's favorite color? Purrr-ple! 💜",
+                    "What do you call a pile of kittens? A meow-ntain! ⛰️",
+                    "Why was the cat sitting on the clock? He wanted to be a cool cat on time! ⏰",
+                    "What is a cat's favorite school subject? MEOW-thematics! 📐"
+                ]
+            },
+            si: {
+                title: "ළමා පූස් ලෝකය 🐱",
+                subtitle: "ලොව පුරා වෙසෙන විවිධ පූස් වර්ග ගැන ඉගෙන ගන්න, ඔවුන්ගේ හඬට සවන් දෙන්න!",
+                searchPlaceholder: "පූසෙක් සොයන්න...",
+                all: "සියලුම පූසන්",
+                fluffy: "ලොම් බහුල පූසන් ☁️",
+                playful: "දඟකාර පූසන් ⚡",
+                wild: "කැලෑ බළලුන් 🦁",
+                btnHear: "හඬ අසන්න! 🔊",
+                btnStats: "විස්තර 📊",
+                quizTitle: "පූස් දැනුම මිනුම! ✏️",
+                quizDesc: "පූසන් ගැන ඔබේ දැනුම පරීක්ෂා කර ලකුණු ලබා ගන්න!",
+                scoreLabel: "ලකුණු",
+                successTitle: "🎉 විශිෂ්ටයි! උපරිම ලකුණු!",
+                successDesc: "ඔබ දැන් පූස් විශේෂඥයෙක්! ඔබට මියාව් ස්තුතියි!",
+                restartBtn: "නැවත ක්‍රීඩා කරන්න 🔄",
+                noResults: "😿 පූසන් හමු වූයේ නැත! වෙනත් නමක් සොයන්න.",
+                statsSize: "ප්‍රමාණය",
+                statsLife: "ආයු කාලය",
+                close: "වහන්න ❌",
+                helperIntro: "ආයුබෝවන් යහළුවා! පූස් විහිළුවක් කියවන්න මාව ක්ලික් කරන්න!",
+                jokes: [
+                    "පූසෝ පරිගණකය උඩ වාඩි වෙන්නේ ඇයි? මීයා (mouse) දිහා බලාගෙන ඉන්න! 🐭",
+                    "පූසන් කැමතිම පාට මොකක්ද? පර්පල් (Purrr-ple) පාට! 💜",
+                    "පූස් පැටව් ගොඩකට ඉංග්‍රීසියෙන් කියන්නේ මොකක්ද? මියාවුන්ටන් (meow-ntain)! ⛰️",
+                    "පූසා ඔරලෝසුව උඩ වාඩි වෙලා හිටියේ ඇයි? වෙලාවට වැඩ කරන පූසෙක් වෙන්න! ⏰",
+                    "පූසන් පාසලේ ඉගෙන ගන්න කැමතිම විෂය මොකක්ද? මියාව් ගණිතය (MEOW-thematics)! 📐"
+                ]
+            },
+            ta: {
+                title: "குழந்தைகளின் பூனை உலகம் 🐱",
+                subtitle: "உலகெங்கிலும் உள்ள பல்வேறு பூனை இனங்களைக் கற்றுக் கொள்ளவும், அவற்றின் ஒலியைக் கேட்கவும்!",
+                searchPlaceholder: "பூனையைத் தேடுங்கள்...",
+                all: "அனைத்து பூனைகள்",
+                fluffy: "அடர்ந்த முடிகள் கொண்டவை ☁️",
+                playful: "துறுதுறுப்பான பூனைகள் ⚡",
+                wild: "காட்டு பூனைகள் 🦁",
+                btnHear: "ஒலியைக் கேள்! 🔊",
+                btnStats: "விவரம் 📊",
+                quizTitle: "பூனை வினாடி வினா! ✏️",
+                quizDesc: "பூனைகள் பற்றிய உங்களது அறிவைச் சோதித்து புள்ளிகளைப் பெறுங்கள்!",
+                scoreLabel: "புள்ளிகள்",
+                successTitle: "🎉 அருமை! முழு மதிப்பெண்கள்!",
+                successDesc: "நீங்கள் இப்போது ஒரு பூனை நிபுணர்! பாராட்டுகள்!",
+                restartBtn: "மீண்டும் விளையாடு 🔄",
+                noResults: "😿 பூனைகள் எதுவும் கிடைக்கவில்லை! வேறு பெயரைத் தேடுங்கள்.",
+                statsSize: "அளவு",
+                statsLife: "ஆயுட்காலம்",
+                close: "மூடு ❌",
+                helperIntro: "வணக்கம் நண்பரே! பூனை பற்றிய ஜோக் கேட்க என்னை கிளிக் செய்யவும்!",
+                jokes: [
+                    "பூனை ஏன் கணினி மீது அமர்ந்திருக்கிறது? மவுஸ் (Mouse) மீது கண் வைக்க! 🐭",
+                    "பூனைகளுக்கு பிடித்த நிறம் எது? பர்பிள் (Purrr-ple)! 💜",
+                    "பூனைக்குட்டிகளின் கூட்டத்திற்கு என்ன பெயர்? மியாவ்-ண்டைன் (meow-ntain)! ⛰️",
+                    "பூனை ஏன் கடிகாரத்தின் மீது அமர்ந்திருந்தது? சரியான நேரத்தை காட்ட! ⏰",
+                    "பூனைகளுக்கு பிடித்த பள்ளி பாடம் எது? மியாவ்-கணிதம் (MEOW-thematics)! 📐"
+                ]
+            }
+        };
+
+        // Feline Breeds Database
+        const catsData = [
+            {
+                id: "persian",
+                category: "fluffy",
+                soundType: "high",
+                image: "https://images.unsplash.com/photo-1614035030394-b6e5b01e0737?auto=format&fit=crop&w=600&q=80",
+                languages: {
+                    en: {
+                        name: "Persian Cat",
+                        description: "Famous for their long, beautiful fluffy fur and sweet, gentle faces! They love to sit quietly on your lap.",
+                        personality: ["Sweet", "Calm", "Quiet"],
+                        funFact: "They have been companion pets for thousands of years, starting in ancient Persia!",
+                        size: "Medium (7-12 lbs)",
+                        life: "12-17 years"
+                    },
+                    si: {
+                        name: "පර්සියානු බළලා",
+                        description: "දිගු, ලස්සන සිනිඳු ලොම් සහ මෘදු මුහුණක් නිසා ලොව පුරා ප්‍රසිද්ධයි! ඔවුන් ඔබේ උකුල උඩ සන්සුන්ව වාඩි වී සිටීමට කැමතියි.",
+                        personality: ["ආදරණීය", "සන්සුන්", "නිහඬ"],
+                        funFact: "ඔවුන් වසර දහස් ගණනක සිට පැරණි පර්සියාවෙන් (ඉරානයෙන්) පැවත එන සුරතලුන් කොට්ඨාසයකි!",
+                        size: "මධ්‍යම (කි.ග්‍රෑ. 3-5)",
+                        life: "වසර 12-17"
+                    },
+                    ta: {
+                        name: "பெர்சியன் பூனை",
+                        description: "நீளமான, அழகான மென்மையான முடிகள் மற்றும் அன்பான குணத்திற்குப் பெயர் பெற்றவை! உங்கள் மடியில் அமைதியாக அமர விரும்புகின்றன.",
+                        personality: ["அன்பான", "அமைதியான", "மென்மையான"],
+                        funFact: "இவை பழங்கால பாரசீக நாட்டில் (ஈரான்) இருந்து தோன்றி, ஆயிரக்கணக்கான ஆண்டுகளாக மனிதர்களின் செல்லப்பிராணிகளாக உள்ளன!",
+                        size: "நடுத்தர (3-5 கிலோ)",
+                        life: "12-17 ஆண்டுகள்"
+                    }
+                }
+            },
+            {
+                id: "siamese",
+                category: "playful",
+                soundType: "standard",
+                image: "https://images.unsplash.com/photo-1555685812-4b943f1cb0eb?auto=format&fit=crop&w=600&q=80",
+                languages: {
+                    en: {
+                        name: "Siamese Cat",
+                        description: "Super talkative and friendly cats with beautiful blue eyes! They love to chat and follow you around.",
+                        personality: ["Vocal", "Friendly", "Active"],
+                        funFact: "Siamese kittens are born completely white and get their dark patches as they grow older!",
+                        size: "Medium (8-12 lbs)",
+                        life: "15-20 years"
+                    },
+                    si: {
+                        name: "සියම් බළලා",
+                        description: "ලස්සන නිල් පැහැති ඇස් ඇති, ඉතා සුහදශීලී සහ කතාබහ කිරීමට කැමති පූස් වර්ගයකි! ඔවුන් සැමවිටම ඔබ පිටුපස පැමිණීමට කැමතියි.",
+                        personality: ["කතාබහට කැමති", "සුහදශීලී", "ක්‍රියාශීලී"],
+                        funFact: "සියම් පැටවුන් උපදින විට සම්පූර්ණයෙන්ම සුදු පාට වන අතර ඔවුන් වැඩෙන විට අඳුරු ලප ඇති වේ!",
+                        size: "මධ්‍යම (කි.ග්‍රෑ. 3.5-5.5)",
+                        life: "වසර 15-20"
+                    },
+                    ta: {
+                        name: "சியாமிய பூனை",
+                        description: "அழகான நீல நிற கண்கள் கொண்ட, மிகவும் அன்பான மற்றும் பேசும் பழக்கமுள்ள பூனைகள்! இவை எப்போதும் உங்களுடனே இருக்க விரும்புகின்றன.",
+                        personality: ["பேசும் குணம்", "அன்பானவை", "சுறுசுறுப்பானவை"],
+                        funFact: "சியாமிய பூனைக்குட்டிகள் பிறக்கும் போது முற்றிலும் வெள்ளை நிறத்தில் பிறக்கின்றன, வளர வளரவே அவற்றின் நிறம் மாறுகிறது!",
+                        size: "நடுத்தர (3.5-5.5 கிலோ)",
+                        life: "15-20 ஆண்டுகள்"
+                    }
+                }
+            },
+            {
+                id: "maine_coon",
+                category: "fluffy",
+                soundType: "low",
+                image: "https://images.unsplash.com/photo-1589952283406-b53a7d1347e8?auto=format&fit=crop&w=600&q=80",
+                languages: {
+                    en: {
+                        name: "Maine Coon",
+                        description: "Known as 'Gentle Giants' because they are huge, fluffy, and extremely friendly. They even love playing in water!",
+                        personality: ["Huge", "Gentle", "Smart"],
+                        funFact: "They have extra tufts of fur on their paws to help them walk on snow like natural snowshoes!",
+                        size: "Very Large (11-25 lbs)",
+                        life: "12-15 years"
+                    },
+                    si: {
+                        name: "මේන් කූන් බළලා",
+                        description: "මොවුන් ඉතා විශාල, ලොම් සහිත සහ අතිශය සුහදශීලී නිසා 'මෘදු යෝධයන්' ලෙස හඳුන්වයි. ඔවුන් ජලයේ සෙල්ලම් කිරීමට පවා කැමතියි!",
+                        personality: ["යෝධ", "මෘදු", "බුද්ධිමත්"],
+                        funFact: "හිම මත ඇවිදීමට උපකාර වන පරිදි ඔවුන්ගේ පාදවල අමතර ලොම් පිහිටා තිබේ!",
+                        size: "ඉතා විශාල (කි.ග්‍රෑ. 5-11)",
+                        life: "වසර 12-15"
+                    },
+                    ta: {
+                        name: "மைனே கூன் பூனை",
+                        description: "மிகப் பெரியதாகவும், பஞ்சுபோன்ற முடிகளுடனும் இருப்பதால் இவை 'அன்பான ராட்சதர்கள்' என அழைக்கப்படுகின்றன. இவற்றுக்கு நீரில் விளையாட மிகவும் பிடிக்கும்!",
+                        personality: ["பெரியவை", "அமைதியானவை", "புத்திசாலி"],
+                        funFact: "பனியில் எளிதாக நடப்பதற்காக இவற்றின் பாதங்களில் கூடுதல் முடிகள் வளர்ந்துள்ளன!",
+                        size: "மிகப் பெரியது (5-11 கிலோ)",
+                        life: "12-15 ஆண்டுகள்"
+                    }
+                }
+            },
+            {
+                id: "bengal",
+                category: "playful",
+                soundType: "high",
+                image: "https://images.unsplash.com/photo-1577023311546-cdc07a8454c9?auto=format&fit=crop&w=600&q=80",
+                languages: {
+                    en: {
+                        name: "Bengal Cat",
+                        description: "Looks like a miniature leopard! They are full of energy, love to jump high, and are very smart.",
+                        personality: ["Energetic", "Spotted", "Curious"],
+                        funFact: "Unlike most domestic cats, Bengal cats absolutely love swimming and bathing in water!",
+                        size: "Medium to Large (8-15 lbs)",
+                        life: "12-16 years"
+                    },
+                    si: {
+                        name: "බෙංගාලි බළලා",
+                        description: "පුංචි දිවියෙක් වගේ පෙනුමක් ඇත! මොවුන් ඉතා ක්‍රියාශීලී, ඉහළට පැනීමට හැකි සහ ඉතා බුද්ධිමත් පූස් වර්ගයකි.",
+                        personality: ["ශක්තිමත්", "ලප සහිත", "කුතුහලයෙන් පිරි"],
+                        funFact: "අනෙකුත් සුරතල් පූසන් මෙන් නොව, බෙංගාලි පූසන් වතුරේ නෑමට සහ පිහිනීමට බෙහෙවින් ප්‍රිය කරති!",
+                        size: "මධ්‍යම සිට විශාල (කි.ග්‍රෑ. 3.5-7)",
+                        life: "වසර 12-16"
+                    },
+                    ta: {
+                        name: "வங்காள பூனை",
+                        description: "பார்க்க குட்டி சறுத்தை போன்ற தோற்றம் கொண்டது! அதிக ஆற்றலும், உயர தாண்டும் திறனும், புத்திசாலித்தனமும் கொண்டவை.",
+                        personality: ["ஆற்றல் மிக்கவை", "புள்ளிகள் கொண்டவை", "ஆர்வமுள்ளவை"],
+                        funFact: "மற்ற வீட்டு பூனைகளைப் போலல்லாமல், வங்காள பூனைகள் நீரில் குளிப்பதையும் நீந்துவதையும் மிகவும் விரும்புகின்றன!",
+                        size: "நடுத்தர முதல் பெரியது (3.5-7 கிலோ)",
+                        life: "12-16 ஆண்டுகள்"
+                    }
+                }
+            },
+            {
+                id: "sphynx",
+                category: "playful",
+                soundType: "standard",
+                image: "https://images.unsplash.com/photo-1520315342629-6ea920342047?auto=format&fit=crop&w=600&q=80",
+                languages: {
+                    en: {
+                        name: "Sphynx Cat",
+                        description: "A unique, hairless cat that feels like a warm peach! They are very playful, warm, and cuddle-loving.",
+                        personality: ["Hairless", "Cuddly", "Warm"],
+                        funFact: "Even though they have no fur, they need regular baths to keep their sensitive skin clean and healthy!",
+                        size: "Medium (6-12 lbs)",
+                        life: "12-15 years"
+                    },
+                    si: {
+                        name: "ස්පින්ක්ස් බළලා",
+                        description: "සිරුරේ ලොම් නොමැති, උණුසුම් පීච් ගෙඩියක් වැනි අපූරු පූස් වර්ගයකි! ඔවුන් ඉතා දඟකාර මෙන්ම තුරුළු වී සිටීමට ආශා කරති.",
+                        personality: ["ලොම් නැති", "තුරුළුවන", "උණුසුම්"],
+                        funFact: "ලොම් නොතිබුණත්, ඔවුන්ගේ සංවේදී සම පිරිසිදුව තබා ගැනීමට ඔවුන්ව නිතර නාවන්නට සිදු වේ!",
+                        size: "මධ්‍යම (කි.ග්‍රෑ. 3-5.5)",
+                        life: "වසර 12-15"
+                    },
+                    ta: {
+                        name: "ஸ்பின்க்ஸ் பூனை",
+                        description: "உடலில் முடிகள் இல்லாத தனித்துவமான பூனை! தொடுவதற்கு மிதமான சூட்டுடன் இருக்கும். மிகவும் சுறுசுறுப்பானவை, அணைத்துக்கொள்ள விரும்பும்.",
+                        personality: ["முடி இல்லாதது", "அணைக்க விரும்பும்", "சூடானது"],
+                        funFact: "முடிகள் இல்லை என்றாலும், இவற்றின் சருமத்தைப் பாதுகாக்க வாரமொருமுறை குளிப்பாட்ட வேண்டும்!",
+                        size: "நடுத்தர (3-5.5 கிலோ)",
+                        life: "12-15 ஆண்டுகள்"
+                    }
+                }
+            },
+            {
+                id: "scottish",
+                category: "fluffy",
+                soundType: "high",
+                image: "https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=600&q=80",
+                languages: {
+                    en: {
+                        name: "Scottish Fold",
+                        description: "Famous for their cute folded-forward ears and huge round eyes that make them look like sweet little owls!",
+                        personality: ["Folded Ears", "Cute", "Loving"],
+                        funFact: "All Scottish Fold kittens are born with straight ears, and they only start to fold after 3 to 4 weeks!",
+                        size: "Medium (6-13 lbs)",
+                        life: "11-15 years"
+                    },
+                    si: {
+                        name: "ස්කොටිෂ් ෆෝල්ඩ් බළලා",
+                        description: "නැමුණු කන් සහ විශාල වටකුරු ඇස් නිසා ප්‍රසිද්ධයි. මොවුන් බැලූ බැල්මට පුංචි බකමූණෙක් වගේ හුරුබුහුටියි!",
+                        personality: ["නැමුණු කන්", "හුරතල්", "ආදරණීය"],
+                        funFact: "උපතේදී සියලුම පැටවුන්ට කෙලින් කන් පිහිටන අතර, සති 3-4 කට පසුව ඒවා නැමීමට පටන් ගනී!",
+                        size: "මධ්‍යම (කි.ග්‍රෑ. 2.7-6)",
+                        life: "වසර 11-15"
+                    },
+                    ta: {
+                        name: "ஸகாட்டிஷ் மடிப்பு பூனை",
+                        description: "முன்னோக்கி மடிந்த காதுகள் மற்றும் பெரிய வட்ட வடிவ கண்களுக்குப் பெயர் பெற்றவை. பார்ப்பதற்கு குட்டி ஆந்தை போன்ற தோற்றம் கொண்டவை!",
+                        personality: ["மடிந்த காதுகள்", "அழகானது", "அன்பானது"],
+                        funFact: "இவை பிறக்கும் போது நேராக இருக்கும் காதுகள், 3 முதல் 4 வாரங்களுக்குப் பிறகே மடியத் தொடங்குகின்றன!",
+                        size: "நடுத்தர (2.7-6 கிலோ)",
+                        life: "11-15 ஆண்டுகள்"
+                    }
+                }
+            },
+            {
+                id: "lion",
+                category: "wild",
+                soundType: "roar",
+                image: "https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=600&q=80",
+                languages: {
+                    en: {
+                        name: "Lion (King of Wild Cats)",
+                        description: "The King of the Jungle! Lions live in groups called prides. Male lions have magnificent fluffy manes around their heads.",
+                        personality: ["Brave", "Loud", "King"],
+                        funFact: "A lion's mighty roar can be heard from 5 miles (8 kilometers) away! It tells everyone who is boss!",
+                        size: "Huge (260-420 lbs)",
+                        life: "10-14 years"
+                    },
+                    si: {
+                        name: "සිංහයා (කැලෑ බළලුන්ගේ රජු)",
+                        description: "කැලෑවේ රජු ලෙස හඳුන්වයි! සිංහයන් රංචු වශයෙන් ජීවත් වේ. පිරිමි සිංහයන්ට හිස වටා මනරම් කේශර පිහිටා තිබේ.",
+                        personality: ["නිර්භීත", "ගර්ජනාකාරී", "රජු"],
+                        funFact: "සිංහයෙකුගේ ගර්ජනාව සැතපුම් 5ක් (කිලෝමීටර් 8ක්) ඈතට ඇසෙන අතර එය කැලෑවේ තම බලය පෙන්වීමට යොදා ගනී!",
+                        size: "යෝධ (කි.ග්‍රෑ. 120-190)",
+                        life: "වසර 10-14"
+                    },
+                    ta: {
+                        name: "சிங்கம் (காட்டு பூனை)",
+                        description: "காடுகளின் ராஜா! சிங்கங்கள் கூட்டமாக வாழும். ஆண் சிங்கங்களின் தலையைச் சுற்றி அழகான அடர்ந்த பிடரி மயிர் இருக்கும்.",
+                        personality: ["தைரியமானது", "கர்ஜிப்பது", "ராஜா"],
+                        funFact: "சிங்கத்தின் கர்ஜனை 5 மைல் (8 கி.மீ) தூரம் வரை கேட்கும்! தான் காட்டின் ராஜா என்பதை இது பிற விலங்குகளுக்கு உணர்த்தும்!",
+                        size: "மிகப் பெரியது (120-190 கிலோ)",
+                        life: "10-14 ஆண்டுகள்"
+                    }
+                }
+            },
+            {
+                id: "cheetah",
+                category: "wild",
+                soundType: "purr",
+                image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80",
+                languages: {
+                    en: {
+                        name: "Cheetah (Fastest Wild Cat)",
+                        description: "The fastest runner on land! They have beautiful black spots and 'tear marks' on their faces to block the bright sun.",
+                        personality: ["Fast", "Spotted", "Active"],
+                        funFact: "Cheetahs cannot roar like lions; instead, they purr and chirp just like cute house cats!",
+                        size: "Large (75-140 lbs)",
+                        life: "10-12 years"
+                    },
+                    si: {
+                        name: "චීටා (වේගවත්ම කැලෑ බළලා)",
+                        description: "ගොඩබිම වෙසෙන වේගවත්ම සත්වයා වේ! ඔවුන්ගේ සිරුර පුරා කළු ලප ඇති අතර හිරු එළියෙන් බේරීමට ඇස් යට 'කඳුළු සලකුණු' පිහිටා තිබේ.",
+                        personality: ["අතිවේගවත්", "ලප සහිත", "ක්‍රියාශීලී"],
+                        funFact: "චීටාවන්ට සිංහයන් මෙන් ගර්ජනා කළ නොහැකි අතර, ඔවුන්ද නිවෙස්වල වෙසෙන පූසන් මෙන් මියාව් ශබ්ද නඟති!",
+                        size: "විශාල (කි.ග්‍රෑ. 35-65)",
+                        life: "වසර 10-12"
+                    },
+                    ta: {
+                        name: "சிறுத்தை (காட்டு பூனை)",
+                        description: "நிலத்தில் வாழும் விலங்குகளில் மிக வேகமாக ஓடக்கூடியது! உடலில் கரும்புள்ளிகளும், முகத்தில் 'கண்ணீர் தழும்புகளும்' உள்ளன.",
+                        personality: ["வேகமானது", "புள்ளிகள் கொண்டது", "சுறுசுறுப்பானது"],
+                        funFact: "சிறுத்தைகளால் சிங்கத்தைப் போல கர்ஜிக்க முடியாது; மாறாக இவை சாதாரண பூனைகளைப் போல மெல்லிய ஒலி மட்டுமே எழுப்பும்!",
+                        size: "பெரியது (35-65 கிலோ)",
+                        life: "10-12 ஆண்டுகள்"
+                    }
+                }
+            }
+        ];
+
+        // Quiz Questions Maps
+        const quizDatabase = {
+            en: [
+                {
+                    question: "Which cat is known as the 'Gentle Giant' and loves playing in water?",
+                    options: ["Persian Cat", "Maine Coon", "Siamese Cat", "Cheetah"],
+                    correct: 1
+                },
+                {
+                    question: "Lions live in groups called what?",
+                    options: ["Herds", "Packs", "Prides", "Flocks"],
+                    correct: 2
+                },
+                {
+                    question: "Which cat is completely hairless and feels warm like a peach?",
+                    options: ["Sphynx Cat", "Bengal Cat", "Scottish Fold", "Siamese Cat"],
+                    correct: 0
+                },
+                {
+                    question: "What is the fastest wild cat on land?",
+                    options: ["Lion", "Bengal Cat", "Persian Cat", "Cheetah"],
+                    correct: 3
+                },
+                {
+                    question: "Siamese kittens are born with what color fur?",
+                    options: ["White", "Black", "Spotted", "Grey"],
+                    correct: 0
+                }
+            ],
+            si: [
+                {
+                    question: "ජලයේ සෙල්ලම් කිරීමට ප්‍රිය කරන 'මෘදු යෝධයා' ලෙස හඳුන්වන පූසා කවුද?",
+                    options: ["පර්සියානු බළලා", "මේන් කූන් බළලා", "සියම් බළලා", "චීටා"],
+                    correct: 1
+                },
+                {
+                    question: "සිංහයන් රංචු වශයෙන් ජීවත් වන කණ්ඩායම්වලට කියන්නේ කුමක්ද?",
+                    options: ["රංචු (Herds)", "පැක් (Packs)", "ප්‍රයිඩ්ස් (Prides)", "රෑන් (Flocks)"],
+                    correct: 2
+                },
+                {
+                    question: "ලොම් සම්පූර්ණයෙන්ම නොමැති, ඇල්ලූ විට උණුසුම්ව දැනෙන පූසා කවුද?",
+                    options: ["ස්පින්ක්ස් බළලා", "බෙංගාලි බළලා", "ස්කොටිෂ් ෆෝල්ඩ් බළලා", "සියම් බළලා"],
+                    correct: 0
+                },
+                {
+                    question: "ගොඩබිම වෙසෙන වේගවත්ම කැලෑ බළලා කවුද?",
+                    options: ["සිංහයා", "බෙංගාලි බළලා", "පර්සියානු බළලා", "චීටා"],
+                    correct: 3
+                },
+                {
+                    question: "සියම් පූස් පැටවුන් උපදින විට ඇති ලොම්වල වර්ණය කුමක්ද?",
+                    options: ["සුදු පාට", "කළු පාට", "ලප සහිත", "අළු පාට"],
+                    correct: 0
+                }
+            ],
+            ta: [
+                {
+                    question: "நீரில் விளையாட விரும்பும் மற்றும் 'அன்பான ராட்சதர்' என்று அழைக்கப்படும் பூனை எது?",
+                    options: ["பெர்சியன் பூனை", "மைனே கூன் பூனை", "சியாமிய பூனை", "சிறுத்தை"],
+                    correct: 1
+                },
+                {
+                    question: "சிங்கங்களின் கூட்டத்திற்கு என்ன பெயர்?",
+                    options: ["மந்தை (Herds)", "கூட்டம் (Packs)", "பிரைடு (Prides)", "குழு (Flocks)"],
+                    correct: 2
+                },
+                {
+                    question: "உடலில் முடி இல்லாமல், தொடுவதற்கு மிதமான சூடாக இருக்கும் பூனை எது?",
+                    options: ["ஸ்பின்க்ஸ் பூனை", "வங்காள பூனை", "ஸகாட்டிஷ் மடிப்பு", "சியாமிய பூனை"],
+                    correct: 0
+                },
+                {
+                    question: "நிலத்தில் மிக வேகமாக ஓடக்கூடிய காட்டு பூனை எது?",
+                    options: ["சிங்கம்", "வங்காள பூனை", "பெர்சியன் பூனை", "சிறுத்தை"],
+                    correct: 3
+                },
+                {
+                    question: "சியாமிய பூனைக்குட்டிகள் பிறக்கும் போது என்ன நிறத்தில் இருக்கும்?",
+                    options: ["வெள்ளை நிறம்", "கருப்பு நிறம்", "புள்ளிகள் கொண்டது", "சாம்பல் நிறம்"],
+                    correct: 0
+                }
+            ]
+        };
+
+        let currentCategory = 'all';
+        let searchQuery = '';
+
+        // Initializer
+        function initApp() {
+            createBubbles();
+            switchLanguage('en');
+            initQuiz();
+        }
+
+        // Generate Ambient Bubbles
+        function createBubbles() {
+            const ambientBg = document.getElementById('ambientBg');
+            for (let i = 0; i < 12; i++) {
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble';
+                const size = Math.random() * 80 + 30;
+                bubble.style.width = `${size}px`;
+                bubble.style.height = `${size}px`;
+                bubble.style.left = `${Math.random() * 100}vw`;
+                bubble.style.bottom = `-100px`;
+                bubble.style.animationDelay = `${Math.random() * 10}s`;
+                bubble.style.animationDuration = `${Math.random() * 15 + 10}s`;
+                ambientBg.appendChild(bubble);
+            }
+        }
+
+        // Language Engine
+        function switchLanguage(lang) {
+            currentLang = lang;
+            
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            if (lang === 'en') document.querySelectorAll('.lang-btn')[0].classList.add('active');
+            if (lang === 'si') document.querySelectorAll('.lang-btn')[1].classList.add('active');
+            if (lang === 'ta') document.querySelectorAll('.lang-btn')[2].classList.add('active');
+
+            document.getElementById('ui-title').innerText = uiTranslations[lang].title;
+            document.getElementById('ui-subtitle').innerText = uiTranslations[lang].subtitle;
+            document.getElementById('searchBar').placeholder = uiTranslations[lang].searchPlaceholder;
+            document.getElementById('ui-all').innerText = uiTranslations[lang].all;
+            document.getElementById('ui-fluffy').innerText = uiTranslations[lang].fluffy;
+            document.getElementById('ui-playful').innerText = uiTranslations[lang].playful;
+            document.getElementById('ui-wild').innerText = uiTranslations[lang].wild;
+            document.getElementById('ui-quiz-title').innerText = uiTranslations[lang].quizTitle;
+            document.getElementById('ui-quiz-desc').innerText = uiTranslations[lang].quizDesc;
+            document.getElementById('ui-score-label').innerText = uiTranslations[lang].scoreLabel;
+            document.getElementById('ui-success-title').innerText = uiTranslations[lang].successTitle;
+            document.getElementById('ui-success-desc').innerText = uiTranslations[lang].successDesc;
+            document.getElementById('ui-restart-btn').innerText = uiTranslations[lang].restartBtn;
+            document.getElementById('noResults').innerText = uiTranslations[lang].noResults;
+            document.getElementById('chatBubble').innerText = uiTranslations[lang].helperIntro;
+
+            renderCatGrid();
+            renderQuestion();
+        }
+
+        // Render Breeds Cards
+        function renderCatGrid() {
+            const grid = document.getElementById('catGrid');
+            grid.innerHTML = '';
+            let count = 0;
+
+            catsData.forEach(cat => {
+                const catInfo = cat.languages[currentLang];
+                
+                const matchesSearch = catInfo.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                                     catInfo.description.toLowerCase().includes(searchQuery.toLowerCase());
+                const matchesCategory = (currentCategory === 'all') || (cat.category === currentCategory);
+
+                if (matchesSearch && matchesCategory) {
+                    count++;
+                    const card = document.createElement('div');
+                    card.className = 'cat-card';
+                    card.id = `card-${cat.id}`;
+                    
+                    let tagsHtml = '';
+                    catInfo.personality.forEach((tag, idx) => {
+                        tagsHtml += `<span class="personality-tag tag-${idx}">${tag}</span>`;
+                    });
+
+                    card.innerHTML = `
+                        <div class="ear-inner-l"></div>
+                        <div class="ear-inner-r"></div>
+
+                        <div class="cat-img-wrapper">
+                            <img src="${cat.image}" alt="${catInfo.name}" onerror="this.src='https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=600&q=80'">
+                            <span class="category-badge">
+                                ${cat.category === 'fluffy' ? '☁️ Fluffy' : cat.category === 'playful' ? '⚡ Playful' : '🦁 Wild'}
+                            </span>
+                        </div>
+                        <div class="cat-info">
+                            <h3 class="cat-name">${catInfo.name}</h3>
+                            <p class="cat-desc">${catInfo.description}</p>
+                            <div class="tag-container">
+                                ${tagsHtml}
+                            </div>
+                            <div class="fact-bubble">
+                                ${catInfo.funFact}
+                            </div>
+                            <div class="card-actions">
+                                <button class="card-btn btn-sound" onclick="playSound('${cat.soundType}')">
+                                    ${uiTranslations[currentLang].btnHear}
+                                </button>
+                                <button class="card-btn btn-stats" onclick="toggleStats('${cat.id}', true)">
+                                    ${uiTranslations[currentLang].btnStats}
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Stats overlay -->
+                        <div class="stats-drawer" id="stats-${cat.id}">
+                            <div class="stats-header">
+                                <h3>${catInfo.name}</h3>
+                                <button class="close-stats" onclick="toggleStats('${cat.id}', false)">×</button>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">${uiTranslations[currentLang].statsSize}:</span>
+                                <span class="stat-val">${catInfo.size}</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">${uiTranslations[currentLang].statsLife}:</span>
+                                <span class="stat-val">${catInfo.life}</span>
+                            </div>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                }
+            });
+
+            document.getElementById('noResults').style.display = (count === 0) ? 'block' : 'none';
+        }
+
+        function toggleStats(catId, isOpen) {
+            const drawer = document.getElementById(`stats-${catId}`);
+            if (isOpen) drawer.classList.add('open');
+            else drawer.classList.remove('open');
+        }
+
+        function filterCategory(category) {
+            currentCategory = category;
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`btn-${category}`).classList.add('active');
+            renderCatGrid();
+        }
+
+        function filterCats() {
+            searchQuery = document.getElementById('searchBar').value;
+            renderCatGrid();
+        }
+
+        // Web Audio Synthesizer (Realistic sounds generated on-the-fly)
+        function playSound(type) {
+            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+
+            const osc = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            osc.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            
+            const now = audioCtx.currentTime;
+            
+            if (type === 'high') { // Kitten high pitch sweep meow
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(550, now);
+                osc.frequency.exponentialRampToValueAtTime(1050, now + 0.15);
+                osc.frequency.exponentialRampToValueAtTime(750, now + 0.38);
+                
+                gainNode.gain.setValueAtTime(0, now);
+                gainNode.gain.linearRampToValueAtTime(0.35, now + 0.05);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.38);
+                osc.start(now);
+                osc.stop(now + 0.4);
+                
+            } else if (type === 'low') { // Maine Coon deep meow
+                osc.type = 'sawtooth';
+                const filter = audioCtx.createBiquadFilter();
+                filter.type = 'lowpass';
+                filter.frequency.setValueAtTime(650, now);
+                
+                osc.disconnect(gainNode);
+                osc.connect(filter);
+                filter.connect(gainNode);
+                
+                osc.frequency.setValueAtTime(280, now);
+                osc.frequency.exponentialRampToValueAtTime(420, now + 0.22);
+                osc.frequency.exponentialRampToValueAtTime(320, now + 0.6);
+                
+                gainNode.gain.setValueAtTime(0, now);
+                gainNode.gain.linearRampToValueAtTime(0.4, now + 0.08);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.6);
+                osc.start(now);
+                osc.stop(now + 0.6);
+                
+            } else if (type === 'purr') { // Rapid sine-wave gain modulation (Purring)
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(35, now);
+                
+                const mod = audioCtx.createOscillator();
+                const modGain = audioCtx.createGain();
+                mod.frequency.value = 24;
+                modGain.gain.value = 0.55;
+                
+                mod.connect(modGain);
+                modGain.connect(gainNode.gain);
+                
+                gainNode.gain.setValueAtTime(0.2, now);
+                gainNode.gain.linearRampToValueAtTime(0.2, now + 1.4);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, now + 1.5);
+                
+                mod.start(now);
+                osc.start(now);
+                osc.stop(now + 1.5);
+                mod.stop(now + 1.5);
+                
+            } else if (type === 'roar') { // Wild Cat Roar (Low frequency rumble + Bandpass-filtered random noise)
+                // Low Rumble
+                const rumble = audioCtx.createOscillator();
+                rumble.type = 'sawtooth';
+                rumble.frequency.setValueAtTime(65, now);
+                rumble.frequency.linearRampToValueAtTime(35, now + 1.2);
+                
+                const rumbleFilter = audioCtx.createBiquadFilter();
+                rumbleFilter.type = 'lowpass';
+                rumbleFilter.frequency.value = 90;
+                
+                const rumbleGain = audioCtx.createGain();
+                rumbleGain.gain.setValueAtTime(0.7, now);
+                rumbleGain.gain.exponentialRampToValueAtTime(0.01, now + 1.3);
+                
+                rumble.connect(rumbleFilter);
+                rumbleFilter.connect(rumbleGain);
+                rumbleGain.connect(audioCtx.destination);
+                
+                // Noise element
+                const bufferSize = audioCtx.sampleRate * 1.5;
+                const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+                const data = buffer.getChannelData(0);
+                for (let i = 0; i < bufferSize; i++) {
+                    data[i] = Math.random() * 2 - 1;
+                }
+                
+                const noiseNode = audioCtx.createBufferSource();
+                noiseNode.buffer = buffer;
+                
+                const noiseFilter = audioCtx.createBiquadFilter();
+                noiseFilter.type = 'bandpass';
+                noiseFilter.frequency.setValueAtTime(140, now);
+                noiseFilter.frequency.exponentialRampToValueAtTime(55, now + 0.9);
+                noiseFilter.Q.value = 2.5;
+                
+                noiseNode.connect(noiseFilter);
+                noiseFilter.connect(gainNode);
+                
+                gainNode.gain.setValueAtTime(0.85, now);
+                gainNode.gain.linearRampToValueAtTime(0.85, now + 0.35);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, now + 1.4);
+                
+                rumble.start(now);
+                noiseNode.start(now);
+                rumble.stop(now + 1.4);
+                noiseNode.stop(now + 1.4);
+                
+            } else { // Standard Meow (Classic)
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(420, now);
+                osc.frequency.exponentialRampToValueAtTime(780, now + 0.16);
+                osc.frequency.exponentialRampToValueAtTime(520, now + 0.45);
+                
+                gainNode.gain.setValueAtTime(0, now);
+                gainNode.gain.linearRampToValueAtTime(0.4, now + 0.05);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.45);
+                osc.start(now);
+                osc.stop(now + 0.45);
+            }
+        }
+
+        // Quiz Engine State
+        let currentQuizIndex = 0;
+        let score = 0;
+        let answered = false;
+
+        function initQuiz() {
+            currentQuizIndex = 0;
+            score = 0;
+            answered = false;
+            document.getElementById('score').innerText = '0';
+            document.getElementById('quiz-play-area').style.display = 'block';
+            document.getElementById('quizSuccess').style.display = 'none';
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const list = quizDatabase[currentLang];
+            if (currentQuizIndex >= list.length) {
+                document.getElementById('quiz-play-area').style.display = 'none';
+                document.getElementById('quizSuccess').style.display = 'block';
+                return;
+            }
+
+            const currentQ = list[currentQuizIndex];
+            document.getElementById('questionCard').innerText = currentQ.question;
+            
+            const optionsGrid = document.getElementById('optionsGrid');
+            optionsGrid.innerHTML = '';
+            
+            answered = false;
+
+            currentQ.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerText = opt;
+                btn.onclick = () => checkAnswer(idx, btn);
+                optionsGrid.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(selectedIndex, buttonElement) {
+            if (answered) return;
+            answered = true;
+
+            const list = quizDatabase[currentLang];
+            const currentQ = list[currentQuizIndex];
+            const optionButtons = document.querySelectorAll('.option-btn');
+
+            optionButtons.forEach(btn => btn.disabled = true);
+
+            if (selectedIndex === currentQ.correct) {
+                score++;
+                document.getElementById('score').innerText = score;
+                buttonElement.classList.add('correct');
+                playChime(true);
+            } else {
+                buttonElement.classList.add('incorrect');
+                optionButtons[currentQ.correct].classList.add('correct');
+                playChime(false);
+            }
+
+            setTimeout(() => {
+                currentQuizIndex++;
+                renderQuestion();
+            }, 2000);
+        }
+
+        // Chimes for quiz feedback
+        function playChime(isCorrect) {
+            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            const osc = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            osc.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            const now = audioCtx.currentTime;
+
+            if (isCorrect) {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(523.25, now); // C5
+                osc.frequency.setValueAtTime(659.25, now + 0.1); // E5
+                osc.frequency.setValueAtTime(783.99, now + 0.2); // G5
+                gainNode.gain.setValueAtTime(0.25, now);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.5);
+                osc.start(now);
+                osc.stop(now + 0.5);
+            } else {
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(220.00, now); // A3
+                osc.frequency.linearRampToValueAtTime(146.83, now + 0.35); // D3
+                gainNode.gain.setValueAtTime(0.3, now);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
+                osc.start(now);
+                osc.stop(now + 0.4);
+            }
+        }
+
+        function restartQuiz() {
+            initQuiz();
+        }
+
+        // Cat Helper dialog system
+        let lastJokeIdx = -1;
+        function toggleChatBubble() {
+            const bubble = document.getElementById('chatBubble');
+            
+            if (bubble.style.display === 'block') {
+                bubble.style.display = 'none';
+            } else {
+                const jokes = uiTranslations[currentLang].jokes;
+                let randomIdx = Math.floor(Math.random() * jokes.length);
+                while (randomIdx === lastJokeIdx) {
+                    randomIdx = Math.floor(Math.random() * jokes.length);
+                }
+                lastJokeIdx = randomIdx;
+                bubble.innerText = jokes[randomIdx];
+                bubble.style.display = 'block';
+                playSound('high');
+            }
+        }
+
+        window.addEventListener('click', function(e) {
+            if (!document.querySelector('.helper-cat').contains(e.target)) {
+                document.getElementById('chatBubble').style.display = 'none';
+            }
+        });
+
+        window.onload = initApp;
+    </script>
+</body>
+</html>
